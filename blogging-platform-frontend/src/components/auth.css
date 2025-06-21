@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+:root {
+  --primary-color: #4EA685;
+  --secondary-color: #57B894;
+  --black: #000000;
+  --white: #ffffff;
+  --gray: #efefef;
+  --gray-2: #757575;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e3fdfd, #cbf1f5);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.col {
+  width: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.align-items-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.form {
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 1.5rem;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 8px 16px;
+  transform: scale(0);
+  transition: .5s ease-in-out;
+  transition-delay: .5s;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+  margin: 1.2rem 0;
+}
+
+.input-group i {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--gray-2);
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.9rem 3rem;
+  font-size: 1rem;
+  background-color: var(--gray);
+  border-radius: .5rem;
+  border: 0.125rem solid transparent;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.input-group input:focus {
+  border: 0.125rem solid var(--primary-color);
+  background-color: #fff;
+}
+
+.form button {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  padding: 0.75rem 0;
+  border-radius: .5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+  background-color: var(--secondary-color);
+}
+
+.form p {
+  margin: 1rem 0;
+  font-size: .8rem;
+  color: #444;
+}
+
+.pointer {
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.pointer:hover {
+  color: var(--secondary-color);
+}
+
+.container.sign-in .form.sign-in,
+.container.sign-up .form.sign-up {
+  transform: scale(1);
+}
+
+.content-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+}
+
+.text {
+  margin: 4rem;
+  color: var(--white);
+}
+
+.text h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  transition: 1s ease-in-out;
+}
+
+.text p {
+  font-weight: 400;
+  font-size: 1rem;
+  transition: 1s ease-in-out;
+  transition-delay: .2s;
+}
+
+.img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.img img {
+  max-width: 80%;
+  transition: 1s ease-in-out;
+  transition-delay: .4s;
+}
+
+.text.sign-in h2,
+.text.sign-in p,
+.img.sign-in img {
+  transform: translateX(-200%);
+}
+
+.text.sign-up h2,
+.text.sign-up p,
+.img.sign-up img {
+  transform: translateX(200%);
+}
+
+.container.sign-in .text.sign-in h2,
+.container.sign-in .text.sign-in p,
+.container.sign-in .img.sign-in img,
+.container.sign-up .text.sign-up h2,
+.container.sign-up .text.sign-up p,
+.container.sign-up .img.sign-up img {
+  transform: translateX(0);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 300vw;
+  transform: translate(35%, 0);
+  background-image: linear-gradient(-45deg, var(--primary-color), var(--secondary-color));
+  transition: 1s ease-in-out;
+  z-index: 0;
+  border-bottom-right-radius: max(50vw, 50vh);
+  border-top-left-radius: max(50vw, 50vh);
+  box-shadow: rgba(0, 0, 0, 0.15) 0 5px 15px;
+}
+
+.container.sign-in::before {
+  transform: translate(0, 0);
+  right: 50%;
+}
+
+.container.sign-up::before {
+  transform: translate(100%, 0);
+  right: 50%;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .col {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .form {
+    margin-top: 2rem;
+  }
+
+  .img img {
+    width: 50vw;
+  }
+
+  .text h2 {
+    font-size: 2rem;
+  }
+
+  .container::before,
+  .container.sign-in::before,
+  .container.sign-up::before {
+    height: 100vh;
+    border-radius: 0;
+    transform: none;
+    right: 0;
+    width: 100%;
+  }
+}
